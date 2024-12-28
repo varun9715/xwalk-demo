@@ -1,0 +1,32 @@
+name: Sync with Adobe Cloud Manager
+
+on:
+  push:
+    branches:
+      - main # Replace with the branch you want to sync
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the source repository
+      - name: Checkout Source Repository
+        uses: actions/checkout@v3
+
+      # Set up SSH Key for Adobe Cloud Manager
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.CLOUD_MANAGER_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa ssh.cloudmanager.adobe.io >> ~/.ssh/known_hosts
+
+      # Add Adobe Cloud Manager Git Repository as Remote
+      - name: Add Adobe Cloud Manager Remote
+        run: git remote add cloud-manager ssh://git@ssh.cloudmanager.adobe.io/path/to/repo.git
+
+      # Push changes to Adobe Cloud Manager repository
+      - name: Push to Adobe Cloud Manager
+        run: |
+          git push cloud-manager main --force
