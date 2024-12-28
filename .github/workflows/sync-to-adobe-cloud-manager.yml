@@ -27,4 +27,4 @@ jobs:
 
       - name: Force Push to Adobe Cloud Repository
         run: |
-          git push https://varun-kohli-sobeys-com:GClxumhK2DkdS7J3LvxbwAOZDH0V6iGua6vYiZgf0Bwx8hIDwqC1JQQJ99ALACAAAAAFjjIdAAASAZDOMDFB@<ADOBE_CLOUD_REPO_URL>.git master --force
+          git push https://varun-kohli-sobeys-com:GClxumhK2DkdS7J3LvxbwAOZDH0V6iGua6vYiZgf0Bwx8hIDwqC1JQQJ99ALACAAAAAFjjIdAAASAZDOMDFB@git.cloudmanager.adobe.com/sobeyscapitalincorporated/DXP-Demo.git master --force
