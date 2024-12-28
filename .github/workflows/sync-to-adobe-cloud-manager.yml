@@ -30,4 +30,4 @@ jobs:
           ADOBE_CLOUD_USERNAME: ${{ secrets.ADOBE_CLOUD_USERNAME }}
           ADOBE_CLOUD_PASSWORD: ${{ secrets.ADOBE_CLOUD_PASSWORD }}
         run: |
-          git push https://$ADOBE_CLOUD_USERNAME:$ADOBE_CLOUD_PASSWORD@<ADOBE_CLOUD_REPO_URL>.git main --force
+          git push https://$ADOBE_CLOUD_USERNAME:$ADOBE_CLOUD_PASSWORD@<ADOBE_CLOUD_REPO_URL>.git master --force
