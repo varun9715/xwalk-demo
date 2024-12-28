@@ -1,0 +1,7 @@
+{
+    "scripts": [
+        "create path (sling:OrderedFolder) /content/dam/empire-shared",
+        "create path (nt:unstructured) /content/dam/empire-shared/jcr:content",
+        "set properties on /content/dam/empire-shared/jcr:content\n  set cq:conf{String} to /conf/empire-shared\n  set jcr:title{String} to \"Empire Shared\"\nend"
+    ]
+}
