@@ -1,32 +1,33 @@
-name: Sync with Adobe Cloud Manager
+name: Sync to Adobe Cloud Repository
 
 on:
   push:
     branches:
-      - main # Replace with the branch you want to sync
+      - main # Trigger on pushes to the main branch
 
 jobs:
   sync:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the source repository
-      - name: Checkout Source Repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetch all history for proper syncing
 
-      # Set up SSH Key for Adobe Cloud Manager
-      - name: Setup SSH Key
+      - name: Configure Git
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.CLOUD_MANAGER_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -t rsa ssh.cloudmanager.adobe.io >> ~/.ssh/known_hosts
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
 
-      # Add Adobe Cloud Manager Git Repository as Remote
-      - name: Add Adobe Cloud Manager Remote
-        run: git remote add cloud-manager ssh://git@ssh.cloudmanager.adobe.io/path/to/repo.git
-
-      # Push changes to Adobe Cloud Manager repository
-      - name: Push to Adobe Cloud Manager
+      - name: Add Adobe Cloud Repository Remote
         run: |
-          git push cloud-manager main --force
+          git remote add adobe-cloud https://git.cloudmanager.adobe.com/sobeyscapitalincorporated/DXP-Demo.git
+          git fetch adobe-cloud
+
+      - name: Force Push to Adobe Cloud Repository
+        env:
+          ADOBE_CLOUD_USERNAME: ${{ secrets.ADOBE_CLOUD_USERNAME }}
+          ADOBE_CLOUD_PASSWORD: ${{ secrets.ADOBE_CLOUD_PASSWORD }}
+        run: |
+          git push https://$ADOBE_CLOUD_USERNAME:$ADOBE_CLOUD_PASSWORD@<ADOBE_CLOUD_REPO_URL>.git main --force
