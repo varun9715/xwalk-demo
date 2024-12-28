@@ -19,7 +19,7 @@ The main parts of the template are:
 
 ## How to build 
 
-To build all the modules running in the project root directory the following command with Maven 3:
+To build all of the modules running in the project root directory the following command with Maven 3:
 
     mvn clean install
 
