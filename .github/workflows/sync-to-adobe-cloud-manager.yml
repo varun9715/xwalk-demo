@@ -22,7 +22,7 @@ jobs:
 
       - name: Add Adobe Cloud Repository Remote
         run: |
-          git remote add adobe-cloud https://git.cloudmanager.adobe.com/sobeyscapitalincorporated/DXP-Demo.git
+          git remote add adobe-cloud https://varun-kohli-sobeys-com:GClxumhK2DkdS7J3LvxbwAOZDH0V6iGua6vYiZgf0Bwx8hIDwqC1JQQJ99ALACAAAAAFjjIdAAASAZDOMDFB@git.cloudmanager.adobe.com/sobeyscapitalincorporated/DXP-Demo.git
           git fetch adobe-cloud
 
       - name: Force Push to Adobe Cloud Repository
