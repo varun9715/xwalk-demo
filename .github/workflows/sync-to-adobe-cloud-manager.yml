@@ -26,8 +26,5 @@ jobs:
           git fetch adobe-cloud
 
       - name: Force Push to Adobe Cloud Repository
-        env:
-          ADOBE_CLOUD_USERNAME: ${{ secrets.ADOBE_CLOUD_USERNAME }}
-          ADOBE_CLOUD_PASSWORD: ${{ secrets.ADOBE_CLOUD_PASSWORD }}
         run: |
-          git push https://$ADOBE_CLOUD_USERNAME:$ADOBE_CLOUD_PASSWORD@<ADOBE_CLOUD_REPO_URL>.git master --force
+          git push https://varun-kohli-sobeys-com:GClxumhK2DkdS7J3LvxbwAOZDH0V6iGua6vYiZgf0Bwx8hIDwqC1JQQJ99ALACAAAAAFjjIdAAASAZDOMDFB@<ADOBE_CLOUD_REPO_URL>.git master --force
